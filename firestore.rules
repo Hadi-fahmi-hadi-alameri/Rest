@@ -1,0 +1,92 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'salimejekdk77@gmail.com' ||
+        request.auth.token.email == 'manager@royaltailor.sa'
+      );
+    }
+
+    match /users/{userId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /employees/{employeeId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /roles/{roleId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /branches/{branchId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /customers/{customerId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /measurements/{measurementId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /orders/{orderId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /orderItems/{itemId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /garmentTypes/{typeId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /fabrics/{fabricId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /inventoryTransactions/{txnId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /payments/{paymentId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /expenses/{expenseId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /invoices/{invoiceId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /notifications/{notifId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /auditLogs/{logId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /settings/{settingId} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /test/{testId} {
+      allow read, write: if true;
+    }
+  }
+}

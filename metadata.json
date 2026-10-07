@@ -1,0 +1,6 @@
+{
+  "name": "مشغل الخياطة الملكية | Royal Tailor Shop",
+  "description": "بوابة إدارة المشغل وتفصيل الثياب والمخزون والمبيعات والفواتير الضريبية",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
